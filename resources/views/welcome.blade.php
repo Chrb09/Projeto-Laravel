@@ -42,7 +42,11 @@
             </div>
             <div class="mb-3">
                 <label for="Origem" class="form-label">Origem</label>
-                <input type="text" class="form-control" name="Origem" id="Origem" placeholder="">
+                <select class="form-select" nome="Origem" id="Origem">
+                    <option value="Telefone">Telefone</option>
+                    <option value="Whatsapp">Whatsapp</option>
+                    <option value="Celular">Celular</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="Data" class="form-label">Data de contato</label>
