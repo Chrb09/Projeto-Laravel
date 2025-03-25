@@ -31,10 +31,11 @@
         <h1>Cadastrar agendamentos de possiveis clientes</h1>
         <h2>Sistema utilizado para agendamento de serviços</h2>
         <br>
-        <form class="row g-2">
+        <form class="row g-2" action="/cadastrar-produto" method="POST">
+            @csrf
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" name="nome" id="nome" placeholder="">
+                <input type="text" class="form-control" name="Nome" id="nome" placeholder="">
             </div>
             <div class="mb-3">
                 <label for="Telefone" class="form-label">Telefone</label>
@@ -42,7 +43,7 @@
             </div>
             <div class="mb-3">
                 <label for="Origem" class="form-label">Origem</label>
-                <select class="form-select" nome="Origem" id="Origem">
+                <select class="form-select" name="Origem" id="Origem">
                     <option value="Telefone">Telefone</option>
                     <option value="Whatsapp">Whatsapp</option>
                     <option value="Celular">Celular</option>
@@ -54,9 +55,9 @@
             </div>
             <div class="mb-3">
                 <label for="observacao" class="form-label">Observação</label>
-                <textarea class="form-control" name="observacao" id="observacao" rows="3"></textarea>
+                <textarea class="form-control" name="Observacao" id="observacao" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar </button>
+            <button class="btn btn-primary">Enviar </button>
         </form>
     </div>
 </body>

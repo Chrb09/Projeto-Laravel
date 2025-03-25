@@ -12,7 +12,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Models\Pessoa;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
+});
+
+Route::post('cadastrar-produto', function (Request $request) {
+
+    Pessoa::create([
+        'nome' => $request->Nome,
+        'telefone' => $request->Telefone,
+        'origem' => $request->Origem,
+        'data' => $request->Data,
+        'observacao' => $request->Observacao
+    ]);
+
+    echo "Pessoa cadastrada com sucesso!";
 });
