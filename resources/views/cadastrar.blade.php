@@ -31,7 +31,7 @@
         <h1>Cadastrar agendamentos de possiveis clientes</h1>
         <h2>Sistema utilizado para agendamento de serviços</h2>
         <br>
-        <form class="row g-2" action="/cadastrar-produto" method="POST">
+        <form class="row g-2" action="/cadastrar-pessoa" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>

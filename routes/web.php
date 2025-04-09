@@ -16,7 +16,9 @@ use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('inicio');
+    $pessoas = Pessoa::all();
+
+    return view('inicio', ['pessoas' => $pessoas]);
 });
 
 Route::get('/cadastrar', function () {
@@ -33,18 +35,12 @@ Route::post('/cadastrar-pessoa', function (Request $request) {
         'observacao' => $request->Observacao
     ]);
 
-    echo "Pessoa cadastrada com sucesso!";
-});
-
-Route::get('/listar-pessoa/{id}', function ($Id) {
-
-    $pessoa = Pessoa::find($Id);
-    return view('listar', ['pessoa' => $pessoa]);
-
+    $pessoas = Pessoa::all();
+    return view('inicio', ['pessoas' => $pessoas]);
 });
 
 
-Route::get('/editar-pessoa/{id}', function ($Id) {
+Route::get('/editar/{id}', function ($Id) {
 
     $pessoa = Pessoa::find($Id);
     return view('editar', ['pessoa' => $pessoa]);

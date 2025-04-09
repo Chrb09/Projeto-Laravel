@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Inicio</title>
-
 </head>
 
 <body>
@@ -20,13 +19,39 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Cadastrar</a>
-                    <a class="nav-link" href="#">Consultar</a>
+                    <a class="nav-link active" aria-current="page" href="/">Consultar</a>
+                    <a class="nav-link" href="cadastrar">Cadastrar</a>
                 </div>
             </div>
         </div>
     </nav>
     <div class="container">
+        <br>
+        <h1>Listar clientes</h1>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Origem</th>
+                    <th>Data</th>
+                    <th>Observação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pessoas as $pessoa)
+                    <tr>
+                        <td>{{ $pessoa->nome }}</td>
+                        <td>{{ $pessoa->telefone }}</td>
+                        <td>{{ $pessoa->origem }}</td>
+                        <td>{{ $pessoa->data }}</td>
+                        <td>{{ $pessoa->observacao }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
