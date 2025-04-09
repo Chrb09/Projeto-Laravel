@@ -16,14 +16,20 @@ use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
+
+    return redirect()->route('listar');
+});
+
+Route::get('/listar', function () {
     $pessoas = Pessoa::all();
 
-    return view('inicio', ['pessoas' => $pessoas]);
-});
+    return view('listar', ['pessoas' => $pessoas]);
+})->name('listar');
+
 
 Route::get('/cadastrar', function () {
     return view('cadastrar');
-});
+})->name('cadastrar');
 
 Route::post('/cadastrar-pessoa', function (Request $request) {
 
@@ -35,8 +41,8 @@ Route::post('/cadastrar-pessoa', function (Request $request) {
         'observacao' => $request->Observacao
     ]);
 
-    $pessoas = Pessoa::all();
-    return view('inicio', ['pessoas' => $pessoas]);
+    return redirect()->route('listar')
+        ->with('success', 'Pessoa cadastrada com sucesso!');
 });
 
 
@@ -45,13 +51,13 @@ Route::get('/editar/{id}', function ($Id) {
     $pessoa = Pessoa::find($Id);
     return view('editar', ['pessoa' => $pessoa]);
 
-});
+})->name('editar');
 
 Route::post('/editar-pessoa/{id}', function (Request $request, $Id) {
 
     $pessoa = Pessoa::find($Id);
 
-    Pessoa::update([
+    $pessoa->update([
         'nome' => $request->Nome,
         'telefone' => $request->Telefone,
         'origem' => $request->Origem,
@@ -59,7 +65,8 @@ Route::post('/editar-pessoa/{id}', function (Request $request, $Id) {
         'observacao' => $request->Observacao
     ]);
 
-    echo "Pessoa editada com sucesso!";
+    return redirect()->route('listar')
+        ->with('success', 'Pessoa editada com sucesso!');
 });
 
 Route::get('/excluir-pessoa/{id}', function ($Id) {
@@ -67,7 +74,8 @@ Route::get('/excluir-pessoa/{id}', function ($Id) {
     $pessoa = Pessoa::find($Id);
     $pessoa->delete();
 
-    echo "Pessoa deletada com sucesso!";
+    return redirect()->route('listar')
+        ->with('success', 'Pessoa deletada com sucesso!');
 
 });
 
